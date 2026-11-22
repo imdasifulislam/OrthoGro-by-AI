@@ -1,0 +1,381 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans Bengali', ui-sans-serif, sans-serif;
+    overflow-x: hidden;
+  }
+
+  .font-mono-num {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+@keyframes pieSweepReveal {
+  from {
+    stroke-dashoffset: 447;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pieCenterPop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shareBarGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-pie-sweep {
+  animation: pieSweepReveal 950ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-pie-center {
+  animation: pieCenterPop 520ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+}
+
+.animate-share-bar {
+  transform-origin: left center;
+  animation: shareBarGrow 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes neonBorderSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes neonBorderLifecycle {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-neon-lifecycle {
+  animation: neonBorderLifecycle 5000ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  will-change: opacity;
+}
+
+.animate-neon-spin {
+  animation: neonBorderSpin 2400ms linear infinite;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.neon-conic-border {
+  background: conic-gradient(
+    from 0deg,
+    #10b981 0deg,
+    #00f5a0 60deg,
+    #22d3ee 120deg,
+    #34d399 180deg,
+    #00f5a0 240deg,
+    #22d3ee 300deg,
+    #10b981 360deg
+  );
+}
+
+.neon-ring-mask {
+  padding: 2px;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+@keyframes drawerSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-drawer-up {
+  animation: drawerSlideUp 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes onboardBarBreathe {
+  0%,
+  100% {
+    transform: scaleY(0.58);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes onboardBarPulseX {
+  0%,
+  100% {
+    transform: scaleX(0.76);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes onboardPieSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes onboardFloatGentle {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes onboardVoiceRing {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.65;
+  }
+  100% {
+    transform: scale(1.65);
+    opacity: 0;
+  }
+}
+
+@keyframes onboardLineDraw {
+  0% {
+    stroke-dashoffset: 180;
+    opacity: 0.4;
+  }
+  45%,
+  85% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.9;
+  }
+}
+
+@keyframes onboardSyncPulse {
+  0% {
+    transform: translateX(-18px);
+    opacity: 0;
+  }
+  30%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(18px);
+    opacity: 0;
+  }
+}
+
+.animate-onboard-bar {
+  transform-origin: bottom;
+  animation: onboardBarBreathe 2.4s ease-in-out infinite;
+}
+
+.animate-onboard-bar-x {
+  transform-origin: left center;
+  animation: onboardBarPulseX 2.6s ease-in-out infinite;
+}
+
+.animate-onboard-pie-spin {
+  transform-origin: center;
+  animation: onboardPieSpin 14s linear infinite;
+}
+
+.animate-onboard-float {
+  animation: onboardFloatGentle 3.4s ease-in-out infinite;
+}
+
+.animate-onboard-voice-ring {
+  animation: onboardVoiceRing 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.animate-onboard-line-draw {
+  stroke-dasharray: 180;
+  animation: onboardLineDraw 3.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.animate-onboard-sync-pulse {
+  animation: onboardSyncPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes netWorthOrbFloat {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(10px) scale(1.05);
+  }
+}
+
+.net-worth-card {
+  background: linear-gradient(145deg, #0a192f 0%, #173263 100%);
+  box-shadow: 0 10px 26px rgba(10, 25, 47, 0.24);
+  backface-visibility: hidden;
+  contain: paint;
+}
+
+@media (hover: hover) {
+  .net-worth-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(10, 25, 47, 0.34);
+  }
+}
+
+.net-worth-card:active {
+  transform: scale(0.98) translateY(0);
+  box-shadow: 0 8px 18px rgba(10, 25, 47, 0.2);
+}
+
+.net-worth-orb-top {
+  background: radial-gradient(circle, rgba(100, 150, 255, 0.16) 0%, rgba(255, 255, 255, 0) 70%);
+  animation: netWorthOrbFloat 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.net-worth-orb-bottom-neg {
+  background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.net-worth-orb-bottom-pos {
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+@keyframes goalBarShimmer {
+  0% {
+    transform: translateX(-120%);
+  }
+  55%,
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+.goal-bar-fill {
+  position: relative;
+  overflow: hidden;
+  transition: width 820ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: width;
+}
+
+.goal-bar-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 55%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.36) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: goalBarShimmer 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pie-sweep,
+  .animate-pie-center,
+  .animate-share-bar,
+  .animate-drawer-up,
+  .animate-onboard-bar,
+  .animate-onboard-bar-x,
+  .animate-onboard-pie-spin,
+  .animate-onboard-float,
+  .animate-onboard-line-draw,
+  .animate-onboard-sync-pulse,
+  .net-worth-orb-top,
+  .goal-bar-fill::after {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+  }
+
+  .goal-bar-fill {
+    transition: none !important;
+  }
+
+  .goal-bar-fill::after {
+    display: none !important;
+  }
+
+  .animate-onboard-voice-ring {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  .animate-neon-lifecycle,
+  .animate-neon-spin {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+}
+
